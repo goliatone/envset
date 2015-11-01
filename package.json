@@ -1,0 +1,43 @@
+{
+  "name": "envset",
+  "description": "Set env vars before running your program",
+  "version": "0.1.0",
+  "homepage": "https://github.com/goliatone/envset",
+  "author": {
+    "name": "goliatone",
+    "email": "hello@goliatone.com",
+    "url": "http://goliatone.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/goliatone/envset.git"
+  },
+  "bugs": {
+    "url": "https://github.com/goliatone/envset/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/goliatone/envset/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/envset",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt": "~0.4.5"
+  },
+  "keywords": [],
+  "dependencies": {
+    "filefinder": "^0.3.0",
+    "gextend": "^0.1.6",
+    "grunt-cli": "^0.1.13"
+  }
+}
