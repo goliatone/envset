@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var join = require('path').join;
+var extend = require('gextend');
+var FileFinder = require('filefinder');
+var exec = require('child_process').spawn;
+
+var argv = process.argv.concat();
+var cmd = argv.splice(2);
+console.log('cmd', cmd);
+console.log('args', argv.splice(2));
+console.log('execPath', process.execPath.toString());
+
+var envName = 'development';
+//We should load
+
+function loadEnvironment(envName){
+    return new Promise(function(resolve, reject){
+        FileFinder().find(envName + '.env', join(__dirname, 'envs')).on('loaded', function(data){
+            console.log('LOADED', data);
+            var environment = { NODE_PORT:3000, DEBUG:'*', MSG:'HOLA MUNDO'};
+            var _env = extend({}, process.env, environment);
+            resolve(_env);
+        }).on('error', function(err){
+            reject(err);
+        });
+
+    });
+}
+
+
+loadEnvironment(envName).then(function(env){
+    exec(process.execPath.toString(),
+    cmd,
+    {
+        stdio: 'inherit',
+        // detached: true,
+        env:env
+    });
+});
