@@ -1,0 +1,18 @@
+; this comment is being ignored
+scope = global
+
+[production]
+NODE_PORT=3030
+NODE_ENV=production
+MSG=Hola Mundo
+
+[development]
+NODE_PORT=3031
+NODE_ENV=development
+MSG= Hello World
+DEBUG=*
+
+[local]
+NODE_PORT=3033
+NODE_ENV=local
+MSG=Go Titans!
