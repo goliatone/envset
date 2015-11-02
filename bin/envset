@@ -10,6 +10,7 @@ var fs = require('fs'),
 * LOAD CONFI
 ****************************************/
 var config = rc('envset', {
+    filename: './envset'
     names: ['development', 'production', 'staging', 'test', 'local']
 });
 
@@ -30,7 +31,7 @@ if(config.environments.names.indexOf(envName) === -1){
 /****************************************
 * LOAD ENVIRONMENT
 ****************************************/
-var envs = ini.parse(fs.readFileSync('./envs.ini', 'utf-8'));
+var envs = ini.parse(fs.readFileSync(config.filename, 'utf-8'));
 
 //extract global ENVS from envs.ini
 var globals = Object.keys(envs).reduce(function(out, key){
