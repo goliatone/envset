@@ -1,0 +1,10 @@
+; this comment is being ignored
+scope = global
+
+[production]
+CONFIG=/etc/app/config.ini
+DEBUG=False
+
+[development]
+CONFIG=./config.ini
+DEBUG=True
