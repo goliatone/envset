@@ -19,9 +19,17 @@ var config = rc('envset', {
 ****************************************/
 var argv = process.argv.concat();
 
-//TODO
+//Show help:
 if(argv.length === 2){
-    console.log('Printing HELP');
+    console.log('');
+    console.log('envset: Load environment variables in session before');
+    console.log('        executing your program.');
+    console.log('');
+    console.log('Accepted environment names are:');
+    config.environments.names.map(function(name){
+        console.log(' -', name);
+    });
+    console.log('');
     process.exit(0);
 }
 
