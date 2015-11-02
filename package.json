@@ -22,6 +22,7 @@
     }
   ],
   "main": "lib/envset",
+  "bin":"bin/envset",
   "engines": {
     "node": ">= 0.10.0"
   },
