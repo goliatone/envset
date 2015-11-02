@@ -1,40 +1,58 @@
 #!/usr/bin/env node
+var fs = require('fs'),
+    rc = require('rc'),
+    ini = require('ini'),
+    extend = require('gextend'),
+    join = require('path').join;
 
-var join = require('path').join;
-var extend = require('gextend');
-var FileFinder = require('filefinder');
-var exec = require('child_process').spawn;
 
+/****************************************
+* LOAD CONFI
+****************************************/
+var config = rc('envset', {
+    names: ['development', 'production', 'staging', 'test', 'local']
+});
+
+/****************************************
+* GET ENV NAME AND COMMAND
+****************************************/
 var argv = process.argv.concat();
-var cmd = argv.splice(2);
-console.log('cmd', cmd);
-console.log('args', argv.splice(2));
-console.log('execPath', process.execPath.toString());
+var envName = argv[2];
+var cmd = argv.splice(3);
 
-var envName = 'development';
-//We should load
 
-function loadEnvironment(envName){
-    return new Promise(function(resolve, reject){
-        FileFinder().find(envName + '.env', join(__dirname, 'envs')).on('loaded', function(data){
-            console.log('LOADED', data);
-            var environment = { NODE_PORT:3000, DEBUG:'*', MSG:'HOLA MUNDO'};
-            var _env = extend({}, process.env, environment);
-            resolve(_env);
-        }).on('error', function(err){
-            reject(err);
-        });
-
-    });
+//If it's not a supported environment exit
+if(config.environments.names.indexOf(envName) === -1){
+    console.error('The envs.ini file does not contain a %s entry.', envName);
+    process.exit(1);
 }
 
+/****************************************
+* LOAD ENVIRONMENT
+****************************************/
+var envs = ini.parse(fs.readFileSync('./envs.ini', 'utf-8'));
 
-loadEnvironment(envName).then(function(env){
-    exec(process.execPath.toString(),
-    cmd,
-    {
-        stdio: 'inherit',
-        // detached: true,
-        env:env
-    });
+//extract global ENVS from envs.ini
+var globals = Object.keys(envs).reduce(function(out, key){
+    if(config.environments.names.indexOf(key) !== -1) return out;
+    out[key] = envs[key];
+    return out;
+}, {});
+
+
+/****************************************
+* EXTEND ENVIRONMENT
+****************************************/
+var _env = extend({}, process.env, globals, envs[envName]);
+
+/****************************************
+* EXECUTE ORIGINAL COMMAND
+****************************************/
+var exec = require('child_process').spawn;
+exec(process.execPath.toString(),
+cmd,
+{
+    stdio: 'inherit',
+    // detached: true,
+    env: _env
 });
