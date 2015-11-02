@@ -29,4 +29,7 @@ Licensed under the MIT license.
 
 <!--
 const whichPromise = require('which-promise');
+
+//https://github.com/ioquatix/shell-environment/blob/master/lib/index.coffee
+ChildProcess.spawn process.env.SHELL, ['-ilc', @command + ">&3"],
 -->
