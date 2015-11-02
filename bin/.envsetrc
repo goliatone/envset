@@ -1,4 +1,5 @@
 ;Default environment names
+filename=.envset
 
 [environments]
 names[]=test
