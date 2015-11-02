@@ -18,9 +18,16 @@ var config = rc('envset', {
 * GET ENV NAME AND COMMAND
 ****************************************/
 var argv = process.argv.concat();
-var envName = argv[2];
-var cmd = argv.splice(3);
 
+//TODO
+if(argv.length === 2){
+    console.log('Printing HELP');
+    process.exit(0);
+}
+
+var envName = argv[2];
+var cmd = argv[3];
+var args = argv.splice(4);
 
 //If it's not a supported environment exit
 if(config.environments.names.indexOf(envName) === -1){
@@ -50,10 +57,8 @@ var _env = extend({}, process.env, globals, envs[envName]);
 * EXECUTE ORIGINAL COMMAND
 ****************************************/
 var exec = require('child_process').spawn;
-exec(process.execPath.toString(),
-cmd,
-{
-    stdio: 'inherit',
+exec(cmd, args, {
     // detached: true,
+    stdio: 'inherit',
     env: _env
 });
