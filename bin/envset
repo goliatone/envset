@@ -10,7 +10,7 @@ var fs = require('fs'),
 * LOAD CONFI
 ****************************************/
 var config = rc('envset', {
-    filename: './envset'
+    filename: './.envset',
     names: ['development', 'production', 'staging', 'test', 'local']
 });
 
