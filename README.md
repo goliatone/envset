@@ -10,6 +10,16 @@ var envset = require('envset');
 envset.awesome(); // "awesome"
 ```
 
+## TODO
+
+* We should copy our .envsetrc to ~/.envsetrc to one of the following
+    * $HOME/.${appname}rc
+    * $HOME/.${appname}/config
+    * $HOME/.config/${appname}
+    * $HOME/.config/${appname}/config
+    * /etc/${appname}rc
+    * /etc/${appname}/config
+
 ## Documentation
 _(Coming soon)_
 
