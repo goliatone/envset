@@ -22,12 +22,14 @@
     }
   ],
   "main": "lib/envset",
-  "bin":"bin/envset",
+  "bin": "bin/envset",
   "engines": {
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt nodeunit",
+    "postinstall": "node ./bin/postinstall",
+    "postuninstall": "node ./bin/postuninstall"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
@@ -41,6 +43,8 @@
     "gextend": "^0.1.6",
     "grunt-cli": "^0.1.13",
     "ini": "^1.3.4",
-    "rc": "^1.1.2"
+    "rc": "^1.1.2",
+    "update-notifier": "^0.5.0",
+    "userhome": "^1.0.0"
   }
 }
