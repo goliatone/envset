@@ -55,6 +55,14 @@ var globals = Object.keys(envs).reduce(function(out, key){
     return out;
 }, {});
 
+//TODO: Make plugins for this.
+//We create an environmental variable holding the current
+//environment name, ie NODE_ENV=development
+if(globals.hasOwnProperty('exportEnvironment')){
+    var exportEnvironment = globals['exportEnvironment'];
+    envs[envName][exportEnvironment] = envName;
+}
+
 
 /****************************************
 * EXTEND ENVIRONMENT
