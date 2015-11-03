@@ -19,16 +19,6 @@ This will provide a CLI interface, which can be accessed via terminal:
 $ envset
 ```
 
-## TODO
-
-* We should copy our .envsetrc to ~/.envsetrc to one of the following
-    * $HOME/.${appname}rc
-    * $HOME/.${appname}/config
-    * $HOME/.config/${appname}
-    * $HOME/.config/${appname}/config
-    * /etc/${appname}rc
-    * /etc/${appname}/config
-
 ## Documentation
 
 The `package.json` file includes two installation live cycle scripts:
