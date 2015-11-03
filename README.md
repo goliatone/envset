@@ -64,12 +64,11 @@ $ envset development node app.js
 ```
 
 
-
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+* 2015-11-02: v0.2.0: Initial **npm** release.
 
 ## License
 Copyright (c) 2015 goliatone  
