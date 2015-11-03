@@ -10,7 +10,7 @@ var fs = require('fs'),
 updateNotifier({pkg: pkg}).notify();
 
 /****************************************
-* LOAD CONFI
+* LOAD CONFIG
 ****************************************/
 var config = rc('envset', {
     filename: './.envset',
