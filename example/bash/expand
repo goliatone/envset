@@ -1,0 +1,34 @@
+#!/bin/sh
+
+usage(){
+    echo "expand 1.0"
+    echo "Expands variables of type \${VAR1} \nin a given file with environmental variables"
+    echo "Usage:\n\tVAR1=value1 VAR2=value2 expand"
+    echo "Usage:\n\tVAR1=value1 VAR2=value2 expand -s local.env -t docker-compose.tmpl.yml -o docker-compose.yml"
+    exit
+}
+
+if [[ "$1" = "-h" ]]; then
+# if [[ "$1" = "--help" ]]; then
+    usage;
+fi
+
+while getopts s:t:o: option; do
+    case "${option}" in
+        s) SRC=${OPTARG};;
+        t) TPL=${OPTARG};;
+        o) OUT=${OPTARG};;
+    esac
+done
+
+expand_env_vars() {
+    local data=$(cat "$1")
+    local delimiter="__expand_delimiter__"
+    local command="cat <<$delimiter"$'\n'"$data"$'\n'"$delimiter"$'\n'""
+    eval "$command"
+}
+
+#in case you want to store the variables in a local file
+[ -f ${SRC:-./local.env} ] && source ${SRC:-./local.env}
+
+expand_env_vars ${TPL:-docker-compose.tpl} > ${OUT:-docker-compose.yml}
