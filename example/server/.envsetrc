@@ -1,8 +1,0 @@
-;Default environment names
-
-[environments]
-names[]=test
-names[]=local
-names[]=staging
-names[]=production
-names[]=development
