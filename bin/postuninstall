@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var userhome = require('userhome');
+var filename = '.envsetrc';
+var target = userhome(filename);
+
+fs.unlink(target, function () {});
