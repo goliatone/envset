@@ -32,6 +32,7 @@ If you type `envset` without arguments it will display help and a list of suppor
 Follows `rc` conventions.
 
 
+### Post and pre installation hooks
 The `package.json` file includes two installation live cycle scripts:
 
 
