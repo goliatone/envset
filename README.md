@@ -30,7 +30,17 @@ $ envset
     * /etc/${appname}/config
 
 ## Documentation
-_(Coming soon)_
+
+The `package.json` file includes two installation live cycle scripts:
+
+
+`postinstall`:
+
+Executed after installation of the module. It creates a default `.envsetrc` config file in the user's home directory.
+
+`postuninstall`:
+
+Executed after uninstalling the module. It removes the `.envsetrc` file created during installation.
 
 ## Examples
 
