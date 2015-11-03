@@ -21,6 +21,17 @@ $ envset
 
 ## Documentation
 
+### Commands
+If you type `envset` without arguments it will display help and a list of supported environment names.
+
+### .envset file
+
+
+### Configuration
+
+Follows `rc` conventions.
+
+
 The `package.json` file includes two installation live cycle scripts:
 
 
