@@ -14,7 +14,10 @@ updateNotifier({pkg: pkg}).notify();
 ****************************************/
 var config = rc('envset', {
     filename: './.envset',
-    names: ['development', 'production', 'staging', 'test', 'local']
+    exportEnvironment: 'NODE_ENV',
+    environments: {
+        names: ['development', 'production', 'staging', 'test', 'local']
+    }
 });
 
 /****************************************
@@ -65,10 +68,11 @@ var globals = Object.keys(envs).reduce(function(out, key){
 //TODO: Make plugins for this func.
 //We create an environmental variable holding the current
 //environment name, ie NODE_ENV=development
+var exportEnvironment = config.exportEnvironment;
 if(globals.hasOwnProperty('exportEnvironment')){
-    var exportEnvironment = globals['exportEnvironment'];
-    envs[envName][exportEnvironment] = envName;
+    exportEnvironment = globals['exportEnvironment'];
 }
+envs[envName][exportEnvironment] = envName;
 
 
 /****************************************
