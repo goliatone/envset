@@ -29,7 +29,7 @@ If you type `envset` without arguments it will display help and a list of suppor
 
 ### Configuration
 
-Follows `rc` conventions.
+Follows `rc` [standards][rcstand].
 
 
 ### Post and pre installation hooks
@@ -105,3 +105,4 @@ ChildProcess.spawn process.env.SHELL, ['-ilc', @command + ">&3"],
 [ini]: https://en.wikipedia.org/wiki/INI_file
 [dtools]: http://cr.yp.to/daemontools.html
 [envdir]: http://cr.yp.to/daemontools/envdir.html
+[rcstand]: https://github.com/dominictarr/rc#standards
