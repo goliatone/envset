@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+/**
+ * We want to move the default config
+ * file to a new home.
+ * $HOME/.${appname}rc
+ */
+var fs = require('fs');
+var join = require('path').join;
+
+var userhome = require('userhome');
+var filename = '.envsetrc';
+var target = userhome(filename);
+var source = join(__dirname, filename);
+
+fs.writeFileSync(target, fs.readFileSync(source));
