@@ -70,6 +70,13 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 * 2015-11-02: v0.2.0: Initial **npm** release.
 
+
+## TODO
+
+* Tests
+* Programmatic interface
+
+
 ## License
 Copyright (c) 2015 goliatone  
 Licensed under the MIT license.
