@@ -1,4 +1,4 @@
-; this comment is being ignored
+; Name used to export current environment name
 exportEnvironment= NODE_ENV
 
 [production]
