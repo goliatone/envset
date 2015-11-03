@@ -3,8 +3,11 @@ var fs = require('fs'),
     rc = require('rc'),
     ini = require('ini'),
     extend = require('gextend'),
-    join = require('path').join;
+    join = require('path').join,
+    pkg = require('../package.json'),
+    updateNotifier = require('update-notifier');
 
+updateNotifier({pkg: pkg}).notify();
 
 /****************************************
 * LOAD CONFI
@@ -24,6 +27,8 @@ if(argv.length === 2){
     console.log('');
     console.log('envset: Load environment variables in session before');
     console.log('        executing your program.');
+    console.log('');
+    console.log('version:', pkg.version);
     console.log('');
     console.log('Accepted environment names are:');
     config.environments.names.map(function(name){
