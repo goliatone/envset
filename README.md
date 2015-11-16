@@ -87,6 +87,9 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 * Tests
 * Programmatic interface
+* `set`:
+    - `envset local set NODE_DEBUG=*` this would set the NODE_DEBUG variable to '*'
+    - `enset local remove NODE_DEBUG`
 
 
 ## License
