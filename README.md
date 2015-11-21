@@ -5,7 +5,6 @@
 Inspired by [daemontools][dtools]' tool [envdir][envdir].
 
 
-
 ## Getting Started
 
 Install the module globally with:
@@ -48,7 +47,7 @@ Executed after uninstalling the module. It removes the `.envsetrc` file created 
 
 An **.envset** file could look like this:
 
-```
+```ini
 [production]
 NODE_AWS_SECRET_ACCESS_KEY=FS40N0QY22p2bpciAh7wuAeHjJURgXIBQ2cGodpJD3FRjw2EyYGjyXpi73Ld8zWO
 NODE_AWS_ACCESS_KEY_ID=LSLhv74Q1vH8auQKUt5pFwnix0FUl0Ml
@@ -75,6 +74,16 @@ To use it, simply prefix the call to your program with `envset` and the name of 
 $ envset development node app.js
 ```
 
+You can:
+
+```ini
+[local]
+MSG=Hello World
+```
+
+```
+envset local -- env | grep MSG | say
+```
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
