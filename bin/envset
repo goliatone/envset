@@ -35,7 +35,7 @@ if(argv.length === 2){
     console.log('');
     console.log('Accepted environment names are:');
     config.environments.names.map(function(name){
-        console.log(' -', name);
+        console.log(' - ', name);
     });
     console.log('');
     console.log('You might want to add your ".envset" file to ".gitignore"');
@@ -84,8 +84,15 @@ var _env = extend({}, process.env, globals, envs[envName]);
 * EXECUTE ORIGINAL COMMAND
 ****************************************/
 var exec = require('child_process').spawn;
-exec(cmd, args, {
+var child = exec(cmd, args, {
     // detached: true,
     stdio: 'inherit',
     env: _env
+});
+
+child.on('error', function (err) {
+  console.error('envset failed to execute provided command.');
+  console.error('Ensure the following is a valid command.');
+  console.error('%s %s', cmd, args.join(' '));
+  console.error(err);
 });
