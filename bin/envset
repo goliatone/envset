@@ -31,14 +31,14 @@ if(argv.length === 2){
     console.log('envset: Load environment variables in session before');
     console.log('        executing your program.');
     console.log('');
-    console.log('version:', pkg.version);
-    console.log('');
     console.log('Accepted environment names are:');
     config.environments.names.map(function(name){
         console.log(' - ', name);
     });
     console.log('');
     console.log('You might want to add your ".envset" file to ".gitignore"');
+    console.log('');
+    console.log('version:', pkg.version);
     console.log('');
     process.exit(0);
 }
@@ -47,14 +47,6 @@ var envName = argv[2];
 var dash = argv[3] === '--' ? 1 : 0;
 var cmd = argv[3 + dash];
 var args = argv.splice(4 + dash);
-
-
-
-//If it's not a supported environment exit
-if(config.environments.names.indexOf(envName) === -1){
-    console.error('The envs.ini file does not contain a %s entry.', envName);
-    process.exit(1);
-}
 
 /****************************************
 * LOAD ENVIRONMENT
@@ -65,8 +57,26 @@ var envs = ini.parse(fs.readFileSync(config.filename, 'utf-8'));
 var globals = Object.keys(envs).reduce(function(out, key){
     if(config.environments.names.indexOf(key) !== -1) return out;
     out[key] = envs[key];
+    delete envs[key];
     return out;
 }, {});
+
+//If it's not a supported environment exit
+if(config.environments.names.indexOf(envName) === -1 ||
+   !envs.hasOwnProperty(envName)){
+    console.error('envset error: Unrecognized environment "%s"', envName);
+    console.error('');
+    console.error('Update your file to include your environment');
+    console.error('');
+    console.error('Your current environments are:')
+    Object.keys(envs).map(function(name){
+        console.log(' - ', name);
+    });
+    console.error('');
+    console.log('version:', pkg.version);
+    console.log('');
+    process.exit(1);
+}
 
 //TODO: Make plugins for this func.
 //We create an environmental variable holding the current
@@ -75,6 +85,7 @@ var exportEnvironment = config.exportEnvironment;
 if(globals.hasOwnProperty('exportEnvironment')){
     exportEnvironment = globals['exportEnvironment'];
 }
+
 envs[envName][exportEnvironment] = envName;
 
 
