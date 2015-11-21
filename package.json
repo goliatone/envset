@@ -37,7 +37,12 @@
     "grunt-contrib-watch": "~0.2.0",
     "grunt": "~0.4.5"
   },
-  "keywords": ["environment", "envdir", "env", "development"],
+  "keywords": [
+    "environment",
+    "envdir",
+    "env",
+    "development"
+  ],
   "dependencies": {
     "filefinder": "^0.3.0",
     "gextend": "^0.1.6",
