@@ -1,4 +1,5 @@
 ;Default environment names
+exportEnvironment=PYTHON_ENV
 
 [environments]
 names[]=test
