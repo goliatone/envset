@@ -87,7 +87,17 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 * Tests
 * Programmatic interface
+* Output to stdout so that we can pipe commands
 
+We could change the semantics, from:
+```
+$ envset development node app.js
+```
+
+to:
+```
+$ envset development -- node app.js
+```
 
 ## License
 Copyright (c) 2015 goliatone  

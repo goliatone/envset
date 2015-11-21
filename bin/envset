@@ -44,8 +44,11 @@ if(argv.length === 2){
 }
 
 var envName = argv[2];
-var cmd = argv[3];
-var args = argv.splice(4);
+var dash = argv[3] === '--' ? 1 : 0;
+var cmd = argv[3 + dash];
+var args = argv.splice(4 + dash);
+
+
 
 //If it's not a supported environment exit
 if(config.environments.names.indexOf(envName) === -1){
