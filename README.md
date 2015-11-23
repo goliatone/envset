@@ -91,7 +91,7 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 * 2015-11-02: v0.2.0: Initial **npm** release.
 * 2015-11-21: v0.3.0: Added '--' to separate command.
-
+* 2015-11-23: v0.4.0: Print `env` if no command provided.
 
 ## TODO
 
