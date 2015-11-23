@@ -99,7 +99,7 @@ var _env = extend({}, process.env, globals, envs[envName]);
 if(!cmd){
     //We do not have command, export to cli
     Object.keys(_env).map(function(name){
-        console.log(name, _env[name]);
+        console.log(name, '=', _env[name]);
     });
     return
 }
