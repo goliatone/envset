@@ -49,7 +49,7 @@ NODE_POSTGRES_USER=postgres
 To use it, simply prefix the call to your program with `envset` and the name of the environment:
 
 ```
-$ envset development node app.js
+$ envset development -- node app.js
 ```
 
 You can:
@@ -115,15 +115,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * Programmatic interface
 * Output to stdout so that we can pipe commands
 
-We could change the semantics, from:
-```
-$ envset development node app.js
-```
-
-to:
-```
-$ envset development -- node app.js
-```
 
 ## License
 Copyright (c) 2015 goliatone  
