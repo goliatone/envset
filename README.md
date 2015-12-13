@@ -15,6 +15,12 @@ By application configuration we mean small and oftentimes sensitive data such as
 
 `envset` helps you manage and set environment variables for multiple build distributions.
 
+Is as simple as calling:
+
+```
+envset development -- node server.js
+```
+
 ## Getting Started
 
 Install the module globally with:
