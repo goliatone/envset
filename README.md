@@ -21,44 +21,6 @@ Is as simple as calling:
 envset development -- node server.js
 ```
 
-## Getting Started
-
-Install the module globally with:
-
-```
-npm install envset -g
-```
-This will provide a CLI interface, which can be accessed via terminal:
-
-```
-$ envset
-```
-
-## Documentation
-
-### Commands
-If you type `envset` without arguments it will display help and a list of supported environment names.
-
-### .envset file
-
-
-### Configuration
-
-Follows `rc` [standards][rcstand].
-
-
-### Post and pre installation hooks
-The `package.json` file includes two installation live cycle scripts:
-
-
-`postinstall`:
-
-Executed after installation of the module. It creates a default `.envsetrc` config file in the user's home directory.
-
-`postuninstall`:
-
-Executed after uninstalling the module. It removes the `.envsetrc` file created during installation.
-
 ## Examples
 
 An **.envset** file could look like this:
@@ -100,6 +62,44 @@ MSG=Hello World
 ```
 envset local -- env | grep MSG | say
 ```
+
+## Getting Started
+
+Install the module globally with:
+
+```
+npm install envset -g
+```
+This will provide a CLI interface, which can be accessed via terminal:
+
+```
+$ envset
+```
+
+## Documentation
+
+### Commands
+If you type `envset` without arguments it will display help and a list of supported environment names.
+
+## .envset file
+
+
+### Configuration
+
+Follows `rc` [standards][rcstand].
+
+
+### Post and pre installation hooks
+The `package.json` file includes two installation live cycle scripts:
+
+
+`postinstall`:
+
+Executed after installation of the module. It creates a default `.envsetrc` config file in the user's home directory.
+
+`postuninstall`:
+
+Executed after uninstalling the module. It removes the `.envsetrc` file created during installation.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
