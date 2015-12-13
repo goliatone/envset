@@ -4,6 +4,16 @@
 
 Inspired by [daemontools][dtools]' tool [envdir][envdir].
 
+---
+
+## Environment level configuration
+Application configuration usually is environment specific and changes between build distributions.
+
+If you follow the 12 factor app guidelines, then you know you should store your configuration in the environment.
+
+By application configuration we mean small and oftentimes sensitive data such as API keys, database credentials. Not all environment configuration is sensitive and are instead build distribution specific values such as the application's TCP port, base URL to build OAuth callbacks, or logging verbosity.
+
+`envset` helps you manage and set environment variables for multiple build distributions.
 
 ## Getting Started
 
