@@ -1,6 +1,6 @@
 # envset
 
-`envset` runs another program with a custom environment according to values defined in a **.envset** config file, which follows the [ini][ini] file format.
+`envset` runs another program with a custom environment according to values defined in a **.envset** config file, which follows the [ini][ini] file format. You can share this file between team members.
 
 Inspired by [daemontools][dtools]' tool [envdir][envdir].
 
@@ -83,6 +83,23 @@ If you type `envset` without arguments it will display help and a list of suppor
 
 ## .envset file
 
+
+## .envsetrc
+You can create an `.envsetrc` file with configuration options for `envset`.
+
+The default `.envsetrc` looks like this:
+
+```
+;Default environment names
+filename=./.envset
+exportEnvironment=NODE_ENV
+
+[environments]
+names[]=test
+names[]=staging
+names[]=production
+names[]=development
+```
 
 ### Configuration
 
