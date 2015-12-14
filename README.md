@@ -13,7 +13,7 @@ If you follow the [12 factor app][12factor] guidelines, then you know you should
 
 By application configuration we mean small and oftentimes sensitive data such as API keys, database credentials. Not all environment configuration is sensitive and are instead build distribution specific values such as the application's TCP port, base URL to build OAuth callbacks, or logging verbosity.
 
-`envset` helps you manage and set environment variables for multiple build distributions.
+`envset` helps you manage and set environment variables for multiple build distributions and [share environment variables][vcn] between team members.
 
 Is as simple as calling:
 
@@ -151,3 +151,4 @@ ChildProcess.spawn process.env.SHELL, ['-ilc', @command + ">&3"],
 [envdir]: http://cr.yp.to/daemontools/envdir.html
 [rcstand]: https://github.com/dominictarr/rc#standards
 [12factor]: http://12factor.net/config
+[vcn]: https://github.com/goliatone/vcn
