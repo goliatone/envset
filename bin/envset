@@ -105,6 +105,14 @@ if(!cmd){
 }
 
 /****************************************
+* Register global error handler
+****************************************/
+process.on('uncaughtException', function(e){
+    console.log('Uncaught Exception:', e.message);
+    errorMessage(e);
+});
+
+/****************************************
 * EXECUTE ORIGINAL COMMAND
 ****************************************/
 var exec = require('child_process').spawn;
@@ -115,8 +123,12 @@ var child = exec(cmd, args, {
 });
 
 child.on('error', function (err) {
-  console.error('envset failed to execute provided command.');
-  console.error('Ensure the following is a valid command.');
-  console.error('%s %s', cmd, args.join(' '));
-  console.error(err);
+    errorMessage(err);
 });
+
+function errorMessage(err){
+    console.error('envset failed to execute provided command.');
+    console.error('Ensure the following is a valid command.');
+    console.error('%s %s', cmd, args.join(' '));
+    console.error(err);
+}
