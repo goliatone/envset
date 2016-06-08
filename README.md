@@ -76,6 +76,9 @@ This will provide a CLI interface, which can be accessed via terminal:
 $ envset
 ```
 
+If you have recently installed `node` or `npm` and get an **EACCES** error during installation on `envset` look at this page about [fixing permissions][npm-fix-perm] on npm.
+
+
 ## Documentation
 
 ### Commands
@@ -152,3 +155,4 @@ ChildProcess.spawn process.env.SHELL, ['-ilc', @command + ">&3"],
 [rcstand]: https://github.com/dominictarr/rc#standards
 [12factor]: http://12factor.net/config
 [vcn]: https://github.com/goliatone/vcn
+[npm-fix-perm]:https://docs.npmjs.com/getting-started/fixing-npm-permissions
