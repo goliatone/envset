@@ -5,4 +5,8 @@ var userhome = require('userhome');
 var filename = '.envsetrc';
 var target = userhome(filename);
 
-fs.unlink(target, function () {});
+try {
+    fs.unlink(target, function () {});
+} catch(e) {
+    console.error('Post Uninstall Script Error', e.message);
+}
