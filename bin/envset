@@ -4,10 +4,19 @@ var fs = require('fs'),
     ini = require('ini'),
     extend = require('gextend'),
     join = require('path').join,
-    pkg = require('../package.json'),
-    updateNotifier = require('update-notifier');
+    pkg = require('../package.json');
 
-updateNotifier({pkg: pkg}).notify();
+/**********************************
+ * NOTIFY IF WE HAVE NEW VERSION.
+**********************************/
+var notifier = require('update-notifier')({
+	pkg: {name: pkg.name, version: pkg.version},
+	callback: function(err, update){
+		if(!update || update.type === 'latest'){ return;}
+		notifier.update = update;
+		notifier.notify();
+	}
+});
 
 /****************************************
 * LOAD CONFIG
