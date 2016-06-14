@@ -13,4 +13,12 @@ var filename = '.envsetrc';
 var target = userhome(filename);
 var source = join(__dirname, filename);
 
-fs.writeFileSync(target, fs.readFileSync(source));
+try {
+    fs.writeFileSync(target, fs.readFileSync(source));
+} catch (e) {
+    console.error('Post Install Error', e.message);
+    console.log('You should manually create a configuration file.');
+    console.log('Copy the template file to the target directory');
+    console.log('Template "%s"', source);
+    console.log('Target "%s"', target);
+}
