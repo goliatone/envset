@@ -13,12 +13,32 @@ var filename = '.envsetrc';
 var target = userhome(filename);
 var source = join(__dirname, filename);
 
-try {
-    fs.writeFileSync(target, fs.readFileSync(source));
-} catch (e) {
-    console.error('Post Install Error', e.message);
-    console.log('You should manually create a configuration file.');
-    console.log('Copy the template file to the target directory');
-    console.log('Template "%s"', source);
-    console.log('Target "%s"', target);
+if(fileExists(target)) return;
+
+createFile(target, source);
+
+
+
+function createFile(target, source){
+    try {
+        fs.writeFileSync(target, fs.readFileSync(source));
+    } catch (e) {
+        console.error('Post Install Error', e.message);
+        console.log('You should manually create a configuration file.');
+        console.log('Copy the template file to the target directory');
+        console.log('Template "%s"', source);
+        console.log('Target "%s"', target);
+    }
+}
+
+function fileExists(filePath)
+{
+    try
+    {
+        return require('fs').statSync(filePath).isFile();
+    }
+    catch (err)
+    {
+        return false;
+    }
 }
