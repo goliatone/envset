@@ -1,7 +1,7 @@
 {
   "name": "envset",
   "description": "Set env vars before running your program",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "homepage": "https://github.com/goliatone/envset",
   "author": {
     "name": "goliatone",
