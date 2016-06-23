@@ -22,7 +22,7 @@ var notifier = require('update-notifier')({
 * LOAD CONFIG
 ****************************************/
 var config = rc('envset', {
-    filename: './.envset',
+    filename: '.envset',
     exportEnvironment: 'NODE_ENV',
     environments: {
         names: ['development', 'production', 'staging', 'test', 'local']
@@ -61,7 +61,19 @@ var args = argv.splice(4 + dash);
 /****************************************
 * LOAD ENVIRONMENT
 ****************************************/
-var envs = ini.parse(fs.readFileSync(config.filename, 'utf-8'));
+var envs;
+try {
+    var filename = require('../lib/utils').find(config.filename);
+    envs = ini.parse(fs.readFileSync(filename, 'utf-8'));
+
+    if(!envs){
+        throw new Error('envset tried to find a valid file in your path but failed');
+    }
+
+} catch(e) {
+    console.log('ERROR', e.message);
+    process.exit(1);
+}
 
 //extract global ENVS from envs.ini
 var globals = Object.keys(envs).reduce(function(out, key){
