@@ -128,6 +128,10 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 * 2015-11-02: v0.2.0: Initial **npm** release.
 * 2015-11-21: v0.3.0: Added '--' to separate command.
 * 2015-11-23: v0.4.0: Print `env` if no command provided.
+* 2016-06-14: v0.6.0: Fix update-notifier.
+* 2016-06-14: v0.7.0: Fix postinstall.
+* 2016-06-17: v0.8.0: Remove cruft.
+* 2016-06-23: v0.9.0: Walk directory tree upwards looking for `.envset`.
 
 ## TODO
 
