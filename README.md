@@ -3,7 +3,7 @@
 `envset` runs another program with a custom environment according to values defined in a **.envset** config file, which follows the [ini][ini] file format. You can share this file between team members.
 
 Inspired by [daemontools][dtools]' tool [envdir][envdir].
-
+<!-- more: https://direnv.net -->
 ---
 
 ## Environment level configuration
